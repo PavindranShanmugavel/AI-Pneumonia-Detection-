@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<img src="{{url_for('static', filename= filename)}}" alt="Upload Image" style="height: 300px; width: 300px;">
+<br>
+{% if show==True %}
+
+{% if message=="Pneumonic" %}
+<h2><span class="badge badge-danger">{{message}}</span></h2>
+{%endif%}
+
+{% if message=="Healthy" %}
+<h2><span class="badge badge-success">{{message}}</span></h2>
+{%endif%}
+<br>
+
+<div class="center">
+    <a href="/" class="btn btn-primary" role="button">Home Page</a>
+</div>
+
+{% else %}
+<form action="/" method="POST" enctype="multipart/form-data">
+    <input type="file" name="img" id="img">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<div class = "message">
+    <b>{{message}}</b>
+</div>
+{% endif %}
+{% endblock %}
